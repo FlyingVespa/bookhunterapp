@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/index.css';
 import App from './App';
+import Header from './Header'
 
 
 ReactDOM.render(
@@ -10,6 +11,13 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+ReactDOM.render(
+      <Header />,
+    document.getElementById('header')
+);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

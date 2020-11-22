@@ -1,4 +1,5 @@
 import React from "react";
+import '../../src/assets/index.css';
 
 const emptyBook = {
 
@@ -66,7 +67,8 @@ function constructBook(title, summary, link, category, image, authors, published
       <a href={book.preview} target="_blank" rel="noreferrer">
         <button className="btn-info"> Read More</button>
       </a>
-    </div>
+      
+          </div>
   );
 };
 

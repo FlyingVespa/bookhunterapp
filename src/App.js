@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import './assets/index.css';
 import axios from "axios";
 import Book from "./components/Books";
+import Header from "./Header";
 
 
 const App = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState();
-  const [submit, setSubmit] = useState("Javascript");
+  const [submit, setSubmit] = useState("aa");
   const [, setIsLoading] = useState(false);
   const [, setError] = useState(false);
 
@@ -26,7 +27,7 @@ const App = () => {
       console.log("first time loading");
       
          axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=${submit}`)
+      .get(`https://www.googleapis.com/books/v1/volumes?q=${submit}`+"&maxResults=40")
       .then(res => {
         setBooks(res.data.items);
         console.log(res.data);
@@ -40,12 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="header">
-        <img className="logo-img" src="openbook.png" alt="a"/>
-        <h1>BOOKHUNTER</h1>
-      </div>
-      <div className="slogan"><p>Bound to find something</p></div>
-      <form onSubmit={getSearch}>
+    <form onSubmit={getSearch}>
         <input
           className="input-box"
           type="text"
@@ -55,8 +51,11 @@ const App = () => {
         />
         <button className="btn-submit" type="submit">Search</button>
       </form>
+    
+      <div className="resultstitle"><h2>RESULTS</h2></div>
       <div className="results">
-        <h2>RESULTS</h2>
+        
+        
           {books && books.length > 0 && (books.map(book =>(
             <Book
               key={book.id}
@@ -72,8 +71,18 @@ const App = () => {
           ))
         )}
         {!books && (<div> <p>Oops....Not found. Try searching something else.</p> </div> )}
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
       </div>
+        
+    
+      <div className="footer">
+        HEdri
+      </div>
+     
+      
+      
     </div>
+    
   );
 };
 
