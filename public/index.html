@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Bookhunter</title>
+    <script src="node_modules/magic-grid/dist/magic-grid.cjs.js"></script>
+  </head>
+   <body>
+    <div id="header"></div>
+    <div id="root"></div>
+    <button onclick="topFunction()" id="topPageScroll" title="Go to top">Top</button>
+  
+<script>
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    let mybutton = document.getElementById("topPageScroll");
+
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+</body>
+</html>
