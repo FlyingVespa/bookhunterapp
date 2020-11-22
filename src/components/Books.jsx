@@ -1,38 +1,43 @@
 import React from "react";
-import '../../src/assets/index.css';
 
+import '../../src/assets/index.css';
+import placeHolderImage from '../assets/openbook.png';
+
+//Used as placeholder for books that does not have certain fields
 const emptyBook = {
 
   title: "N/A",
   summary: "No Summary Available",
   category: "Unknown",
-  image: "None",
+  image: placeHolderImage,
   authors: "Unknown",
   publishedDate: "Unknown",
-  
-};
 
+};
 function constructBook(title, summary, link, category, image, authors, publishedDate, preview){
 // Check tht all the values work and is there
   if(title === "" || title === undefined){
     title = emptyBook.title;
   }
-  if(image === "" || image === undefined ){
+
+  if(image === "" || image === undefined || image == null ){
   image = emptyBook.image;
   }
+
   if(category === "" || category === undefined){
     category = emptyBook.category;
   }
+
   if(authors === "" || authors === undefined){
     authors = emptyBook.authors;
   }
-   if(publishedDate === "" || publishedDate === undefined){
+
+  if(publishedDate === "" || publishedDate === undefined){
     publishedDate = emptyBook.publishedDate;
   }
-   if(summary === "" || summary === undefined){
+
+  if(summary === "" || summary === undefined){
     summary = emptyBook.summary;
-
-
   }
 
   return {
@@ -49,26 +54,25 @@ function constructBook(title, summary, link, category, image, authors, published
  const Book = ({ title, summary, link, category, image, authors, publishedDate, preview }) => {
   
   let book = constructBook(title, summary, link, category, image, authors, publishedDate, preview );
+
   return (
-    
     <div className="book-card">
-      <img  className="book-thumbnail"src={book.image} alt="book thumbail"/>
+      <img className="book-thumbnail" src={book.image} alt="book thumbail"/>
       <div className="info-container">
         <a href={book.link} target="_blank" rel="noreferrer">
-          <h1>{book.title && book.title.substr(0,150)}</h1>
+          <h1>{book.title && book.title.substr(0,70)}</h1>
         </a>
         <div className="desc">
           <p id="category"><b>Category:</b> {book.category}</p>
-          <p id="author"> <b>Author:</b> {book.authors}</p>
+          <p id="author"><b>Author:</b> {book.authors}</p>
           <p id="publish"><b>Published:</b> {book.publishedDate}</p>
         </div>
       </div>
-      <div className="summary"><p>{book.summary && book.summary.substr(0, 400)+"..."}</p></div>
+      <div className="summary"><p>{book.summary && book.summary.substr(0, 300)+"..."}</p></div>
       <a href={book.preview} target="_blank" rel="noreferrer">
         <button className="btn-info"> Read More</button>
       </a>
-      
-          </div>
+    </div>
   );
 };
 

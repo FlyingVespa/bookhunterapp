@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import './assets/index.css';
 import axios from "axios";
+
 import Book from "./components/Books";
-import Header from "./Header";
+
+import './assets/index.css';
+import Insta from './assets/img/insta.png';
+import Github from './assets/img/github.png';
+import Linkd from './assets/img/linkedin.png';
+import BackgroundImg from './assets/img/book.jpg';
 
 
 const App = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState();
-  const [submit, setSubmit] = useState("aa");
+  const [submit, setSubmit] = useState("");
   const [, setIsLoading] = useState(false);
   const [, setError] = useState(false);
+
+ 
 
   const updateSeach = e => {
     setSearch(e.target.value);
@@ -23,14 +30,30 @@ const App = () => {
   };
 
   useEffect(() => {
-   
-      console.log("first time loading");
-      
-         axios
+      axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=${submit}`+"&maxResults=40")
       .then(res => {
+
+let bookItems = res.data.items;
+//  image={book.volumeInfo.imageLinks.thumbnail}
+bookItems.forEach(bookElement => {
+
+  //checks that that we don't get error
+  if(bookElement.volumeInfo === undefined){
+    bookElement.volumeInfo = {
+      imageLinks:{
+         thumbnail: ""
+      }
+    };
+  }
+  //final check for imagelinks to make sure it aint broken
+   if(bookElement.volumeInfo.imageLinks === undefined){
+    bookElement.volumeInfo.imageLinks = {
+         thumbnail: ""
+    };
+  }
+});
         setBooks(res.data.items);
-        console.log(res.data);
         setIsLoading(false);
         setError(false);
       })
@@ -38,10 +61,10 @@ const App = () => {
         setError(true);
       });
   }, [submit]);
-
   return (
     <div className="App">
     <form onSubmit={getSearch}>
+      <div className="search">
         <input
           className="input-box"
           type="text"
@@ -50,12 +73,10 @@ const App = () => {
           onChange={updateSeach}
         />
         <button className="btn-submit" type="submit">Search</button>
+        </div>
       </form>
-    
       <div className="resultstitle"><h2>RESULTS</h2></div>
-      <div className="results">
-        
-        
+      <div className="results">    
           {books && books.length > 0 && (books.map(book =>(
             <Book
               key={book.id}
@@ -71,18 +92,17 @@ const App = () => {
           ))
         )}
         {!books && (<div> <p>Oops....Not found. Try searching something else.</p> </div> )}
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-      </div>
-        
-    
-      <div className="footer">
-        HEdri
-      </div>
-     
-      
-      
-    </div>
-    
+        </div>
+        <img id="bgImg"src={BackgroundImg} alt=""/>
+        <footer>
+          <div className="footer">
+            <a href="https://www.linkedin.com/in/hedrinel/"><img className="icon" src={Insta} alt=""/></a>
+            <a href="https://https://github.com/FlyingVespa/bookhunterapp"><img className="icon" src={Github} alt=""/></a>
+            <a href="https://www.linkedin.com/in/hedrinel/"><img className="icon" src={Linkd} alt=""/></a>
+              <p>Helena Nel &copy; 2020 </p>
+          </div>
+          </footer>
+       </div>
   );
 };
 
