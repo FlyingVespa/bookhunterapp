@@ -9,15 +9,12 @@ import Github from './assets/img/github.png';
 import Linkd from './assets/img/linkedin.png';
 import BackgroundImg from './assets/img/book.jpg';
 
-
 const App = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState();
   const [submit, setSubmit] = useState("");
   const [, setIsLoading] = useState(false);
   const [, setError] = useState(false);
-
- 
 
   const updateSeach = e => {
     setSearch(e.target.value);
