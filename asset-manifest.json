@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bookhunterapp/static/css/main.8b35f8bd.chunk.css",
+    "main.js": "/bookhunterapp/static/js/main.26fa995e.chunk.js",
+    "main.js.map": "/bookhunterapp/static/js/main.26fa995e.chunk.js.map",
+    "runtime-main.js": "/bookhunterapp/static/js/runtime-main.3854f1c2.js",
+    "runtime-main.js.map": "/bookhunterapp/static/js/runtime-main.3854f1c2.js.map",
+    "static/js/2.2b66f150.chunk.js": "/bookhunterapp/static/js/2.2b66f150.chunk.js",
+    "static/js/2.2b66f150.chunk.js.map": "/bookhunterapp/static/js/2.2b66f150.chunk.js.map",
+    "index.html": "/bookhunterapp/index.html",
+    "static/css/main.8b35f8bd.chunk.css.map": "/bookhunterapp/static/css/main.8b35f8bd.chunk.css.map",
+    "static/js/2.2b66f150.chunk.js.LICENSE.txt": "/bookhunterapp/static/js/2.2b66f150.chunk.js.LICENSE.txt",
+    "static/media/book.aa791be5.jpg": "/bookhunterapp/static/media/book.aa791be5.jpg",
+    "static/media/insta.45246790.png": "/bookhunterapp/static/media/insta.45246790.png",
+    "static/media/openbook.77b19f19.png": "/bookhunterapp/static/media/openbook.77b19f19.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3854f1c2.js",
+    "static/js/2.2b66f150.chunk.js",
+    "static/css/main.8b35f8bd.chunk.css",
+    "static/js/main.26fa995e.chunk.js"
+  ]
+}
