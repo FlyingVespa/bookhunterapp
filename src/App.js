@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import './assets/index.css';
-import './assets/styles.css';
 import axios from "axios";
 import Book from "./components/Books";
+
 
 const App = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState();
-  const [submit, setSubmit] = useState(" ");
+  const [submit, setSubmit] = useState("Javascript");
   const [, setIsLoading] = useState(false);
   const [, setError] = useState(false);
 
@@ -22,51 +22,29 @@ const App = () => {
   };
 
   useEffect(() => {
-    if(`${submit}` === " " || `${submit}` === ""){
+   
       console.log("first time loading");
       
-      return (
-        <div className="App">
-          <div className="header">
-              <img className="header logo" src="openbook.png" alt="a"/>
-              <h1 className="header title">BOOKHUNTER</h1>
-          </div>
-          <div className=" header slogan"><p>Bound to find something ...</p></div>
-          <form onSubmit={getSearch}>
-            <input
-              className="search-box"
-              type="text"
-              placeholder="Search for a book"
-              value={search}
-              onChange={updateSeach}
-            />
-            <button className="btn-submit"type="submit">Search</button>
-          </form>
-        </div>
-      );
-    }
-
-    axios
+         axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=${submit}`)
       .then(res => {
         setBooks(res.data.items);
-      }).then(() => {
-        //config setup / removing errors ect...
+        console.log(res.data);
         setIsLoading(false);
         setError(false);
       })
-      .catch(() => {
+      .catch(err => {
         setError(true);
       });
-  }, [submit,search]);
+  }, [submit]);
 
   return (
     <div className="App">
       <div className="header">
         <img className="logo-img" src="openbook.png" alt="a"/>
-        <h1 className="header-title">BOOKHUNTER</h1>
+        <h1>BOOKHUNTER</h1>
       </div>
-      <div className="slogan"><p>Bound to find something ...</p></div>
+      <div className="slogan"><p>Bound to find something</p></div>
       <form onSubmit={getSearch}>
         <input
           className="input-box"
@@ -79,8 +57,7 @@ const App = () => {
       </form>
       <div className="results">
         <h2>RESULTS</h2>
-          {books && books.length > 0 && (
-          books.map(book => (
+          {books && books.length > 0 && (books.map(book =>(
             <Book
               key={book.id}
               title={book.volumeInfo.title}
@@ -92,12 +69,9 @@ const App = () => {
               publishedDate={book.volumeInfo.publishedDate}
               preview={book.volumeInfo.previewLink}
             />
-           
           ))
         )}
-        {!books && (
-          <div> <p>Oops....Not found. Try searching something else.</p> </div>
-        )}
+        {!books && (<div> <p>Oops....Not found. Try searching something else.</p> </div> )}
       </div>
     </div>
   );
