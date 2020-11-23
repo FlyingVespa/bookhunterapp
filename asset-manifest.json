@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bookhunterapp/static/css/main.8b35f8bd.chunk.css",
-    "main.js": "/bookhunterapp/static/js/main.26fa995e.chunk.js",
-    "main.js.map": "/bookhunterapp/static/js/main.26fa995e.chunk.js.map",
+    "main.js": "/bookhunterapp/static/js/main.0f93d17f.chunk.js",
+    "main.js.map": "/bookhunterapp/static/js/main.0f93d17f.chunk.js.map",
     "runtime-main.js": "/bookhunterapp/static/js/runtime-main.3854f1c2.js",
     "runtime-main.js.map": "/bookhunterapp/static/js/runtime-main.3854f1c2.js.map",
     "static/js/2.2b66f150.chunk.js": "/bookhunterapp/static/js/2.2b66f150.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.3854f1c2.js",
     "static/js/2.2b66f150.chunk.js",
     "static/css/main.8b35f8bd.chunk.css",
-    "static/js/main.26fa995e.chunk.js"
+    "static/js/main.0f93d17f.chunk.js"
   ]
 }
